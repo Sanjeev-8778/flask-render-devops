@@ -1,12 +1,15 @@
-FROM python:3.10-slim
+# Use official Python image
+FROM python:3.9-slim
 
+# Set working directory
 WORKDIR /app
 
-COPY . .
-
+# Install dependencies
+COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-EXPOSE 5000
+# Copy app code
+COPY . .
 
-CMD ["python", "app.py"]
-git init
+# Run the app
+CMD ["python", "app/main.py"]
